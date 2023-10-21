@@ -127,8 +127,12 @@ public class RetailerController {
 	{
 		try
 		{
-			boolean ok = this.retailerService.deleteRetailer(Integer.parseInt(rId));
-			return new ResponseEntity<>(HttpStatus.OK);
+			boolean status = this.retailerService.deleteRetailer(Integer.parseInt(rId));
+			if (status) {
+				return new ResponseEntity<>(HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 	}
 		catch(Exception e)
 		{

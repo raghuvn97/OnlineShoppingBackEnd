@@ -94,8 +94,12 @@ public class ProductController {
 	{
 		try
 		{
-			boolean ok = this.productService.deleteProduct(Integer.parseInt(pId));
-			return new ResponseEntity<>(HttpStatus.OK);
+			boolean status = this.productService.deleteProduct(Integer.parseInt(pId));
+			if (status) {
+				return new ResponseEntity<>(HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 	}
 		catch(Exception e)
 		{

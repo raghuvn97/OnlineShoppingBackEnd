@@ -9,7 +9,6 @@ import com.lti.dto.PlacedOrder;
 import com.lti.dto.UpdateUser;
 import com.lti.dto.UserSignUp;
 import com.lti.dto.Wishlist;
-import com.lti.entity.CartTable;
 import com.lti.entity.UserTable;
 import com.lti.exception.CartException;
 import com.lti.exception.CustomerException;

@@ -3,7 +3,6 @@ package com.lti.service;
 import java.util.List;
 
 import com.lti.dto.Product;
-import com.lti.entity.ProductTable;
 
 public interface ProductService {
 	public List<Product> getAllProduct();

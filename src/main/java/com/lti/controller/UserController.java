@@ -14,22 +14,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lti.dto.AddProduct;
 import com.lti.dto.Cart;
 import com.lti.dto.ForgotPassword;
 import com.lti.dto.Login;
 import com.lti.dto.PlacedOrder;
-import com.lti.dto.Product;
-import com.lti.dto.RetailerSignUp;
 import com.lti.dto.UpdateUser;
 import com.lti.dto.UserSignUp;
 import com.lti.dto.Wishlist;
-import com.lti.entity.RetailerTable;
 import com.lti.entity.UserTable;
 import com.lti.exception.CustomerException;
-import com.lti.service.AdminService;
-import com.lti.service.ProductService;
-import com.lti.service.RetailerService;
 import com.lti.service.UserService;
 
 @RestController
@@ -85,8 +78,12 @@ public class UserController {
 	@DeleteMapping(path = "/deleteMyWishlist/{wId}") 
 	public ResponseEntity<HttpStatus> deleteMyWishlist(@PathVariable String wId) {
 		try {
-			boolean ok = this.userService.deleteWishlist(Integer.parseInt(wId));
-			return new ResponseEntity<>(HttpStatus.OK);
+			boolean status = this.userService.deleteWishlist(Integer.parseInt(wId));
+			if (status) {
+				return new ResponseEntity<>(HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -103,8 +100,12 @@ public class UserController {
 	@DeleteMapping(path = "/deleteMyCart/{cId}")
 	public ResponseEntity<HttpStatus> deleteMyCart(@PathVariable String cId) {
 		try {
-			boolean ok = this.userService.deleteCart(Integer.parseInt(cId));
-			return new ResponseEntity<>(HttpStatus.OK);
+			boolean status = this.userService.deleteCart(Integer.parseInt(cId));
+			if (status) {
+				return new ResponseEntity<>(HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}

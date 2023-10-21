@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.lti.dto.AddProduct;
 import com.lti.dto.Product;
 import com.lti.dto.RetailerSignUp;
-import com.lti.entity.ProductTable;
 import com.lti.entity.RetailerTable;
 import com.lti.exception.CustomerException;
 import com.lti.repository.RetailerRepository;
